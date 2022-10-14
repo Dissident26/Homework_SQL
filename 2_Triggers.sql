@@ -2,7 +2,7 @@ use LibraryDB
 
 go	--update UserBooks CreatedDate
 
-create or alter trigger UpdateCreatedDate
+create or alter trigger UpdateUserBooks
 	on UserBooks
 	after insert, update
 	as update UserBooks
@@ -11,18 +11,15 @@ create or alter trigger UpdateCreatedDate
 
 go	--update Users ExpiredDate
 
-create or alter trigger UpdateExpiredDate
+create or alter trigger UpdateUsers
 	on Users
 	after insert, update
-	as update Users
-		set ExpiredDate = DATEADD(year, 1, GETDATE())
-		where Id in (select Id from inserted);
-
-go	--update Users Age
-
-create or alter trigger UpdateUsersAge
-	on Users
-	after insert, update
-	as update Users
-		set Age = DATEDIFF(year, BirthDate, GETDATE())
-		where Id in (select Id from inserted)
+	as 
+	begin
+		update Users
+			set ExpiredDate = DATEADD(year, 1, GETDATE())
+			where Id in (select Id from inserted);
+		update Users
+			set Age = DATEDIFF(year, BirthDate, GETDATE())
+			where Id in (select Id from inserted);
+		end
