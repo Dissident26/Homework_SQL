@@ -17,7 +17,7 @@ insert into Books values
 (N'Повелитель мух', 2, 1954),
 (N'Воришка Мартин', 2, 1956),
 (N'Сирены титана', 3, 1956),
-(N'Завтрак для чемпионов', 4, 1959),
+(N'Завтрак для чемпионов', 3, 1959),
 (N'Богословско-политический трактат', 4, 1670),
 (N'О дивный новый мир', 5, 1932),
 (N'Обезьяна и сущность', 5, 1948)
@@ -27,4 +27,12 @@ go
 insert into Users(FirstName, LastName, Email, BirthDate, Address) values 
 (N'Вася', N'Пупкин', N'vasyan3@gmail.com', '1999-12-12', N'СПБ'),
 (N'Пупа', N'Лупин', N'pupa_lupa_azaza@gmail.com', '1991-03-22', N'Минск'),
-(N'Биба', N'Бобин', N'biba-bobin2@gmail.com', '2001-05-07', N'Киев');
+(N'Биба', N'Бобин', N'biba-bobin2@gmail.com', '2001-05-07', N'Киев'),
+(N'Абырвалг', N'Даздранагонович', N'aba-drn@gmail.com', '1995-01-03', N'Гватемала')
+
+go
+
+use LibraryDB
+
+insert into UserBooks(UserId, BookId) values
+(1, 2), (1, 3), (2, 4), (2, 5), (2, 6), (3, 7), (3, 8), (3, 9)

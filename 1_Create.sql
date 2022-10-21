@@ -42,5 +42,5 @@ create table UserBooks (
 	Id int identity primary key not null,
 	UserId int references Users(id) on delete cascade,
 	BookId int references Books(id) on delete cascade,
-	CreatedDate date not null,
+	CreatedDate date null,
 );
